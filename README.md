@@ -1,4 +1,11 @@
-# generator-popeye [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+# Popeye; The Express Generator 
+
+<p align="center">
+  <img src="https://github.com/isurusiri/generator-popeye/blob/master/popeye.png">
+</p>
+
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+
 > A yeoman generator for express.js
 
 ## Installation
