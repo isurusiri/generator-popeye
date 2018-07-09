@@ -8,11 +8,30 @@ module.exports = class extends Generator {
   }
 
   defaultMethod() {
-    this.log('default method ran')
+    this.log('Popeye!!!')
   }
 
-  testMethod() {
-    this.log('test method ran')
+  writing() {
+    this.fs.copyTpl(
+      this.templatePath('_package.json'),
+      this.destinationPath('package.json'),
+      { name: 'yeoman magic' }
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('_index.js'),
+      this.destinationPath('index.js')
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('_routes.js'),
+      this.destinationPath('routes.js')
+    );
+
+  }
+
+  install() {
+    this.npmInstall();
   }
 
 };
