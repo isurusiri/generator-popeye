@@ -1,21 +1,24 @@
 var Generator = require('yeoman-generator');
 
 module.exports = class extends Generator {
+
   constructor(args, opts) {
     super(args, opts);
 
     // custome code
+    this.argument('appname', { type: String, required: true, default: this.appname })
+
   }
 
   defaultMethod() {
-    this.log('Popeye!!!')
+    this.log('Popeye!!!')    
   }
 
   writing() {
     this.fs.copyTpl(
       this.templatePath('_package.json'),
       this.destinationPath('package.json'),
-      { name: 'yeoman magic' }
+      { name: this.options.appname }
     );
 
     this.fs.copyTpl(
@@ -26,6 +29,21 @@ module.exports = class extends Generator {
     this.fs.copyTpl(
       this.templatePath('_routes.js'),
       this.destinationPath('routes.js')
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('app/modules/template-module/_template-controller.js'),
+      this.destinationPath('app/modules/root-module/root-controller.js')
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('app/modules/template-module/_template-model.js'),
+      this.destinationPath('app/modules/root-module/root-model.js')
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('app/modules/template-module/_template-service.js'),
+      this.destinationPath('app/modules/root-module/root-service.js')
     );
 
   }
