@@ -33,17 +33,20 @@ module.exports = class extends Generator {
 
     this.fs.copyTpl(
       this.templatePath('app/modules/template-module/_template-controller.js'),
-      this.destinationPath('app/modules/root-module/root-controller.js')
+      this.destinationPath('app/modules/root-module/root-controller.js'),
+      { name: "root" }
     );
 
     this.fs.copyTpl(
       this.templatePath('app/modules/template-module/_template-model.js'),
-      this.destinationPath('app/modules/root-module/root-model.js')
+      this.destinationPath('app/modules/root-module/root-model.js'),
+      { name: "root" }
     );
 
     this.fs.copyTpl(
       this.templatePath('app/modules/template-module/_template-service.js'),
-      this.destinationPath('app/modules/root-module/root-service.js')
+      this.destinationPath('app/modules/root-module/root-service.js'),
+      { name: "root" }
     );
 
   }
