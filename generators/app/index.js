@@ -14,6 +14,17 @@ module.exports = class extends Generator {
     this.log('Popeye!!!')    
   }
 
+  prompting() {
+    return this.prompt([{
+      type: 'input',
+      name: 'dbcon',
+      message: 'Enter the connection string for the mongodb',
+      default: 'mongodb://localhost:27017/' + this.options.appname
+    }]).then((answers) => {
+      this.options.dbcon = answers.dbcon
+    });
+  }
+
   writing() {
     this.fs.copyTpl(
       this.templatePath('_package.json'),
@@ -23,7 +34,8 @@ module.exports = class extends Generator {
 
     this.fs.copyTpl(
       this.templatePath('_index.js'),
-      this.destinationPath('index.js')
+      this.destinationPath('index.js'),
+      { dbconstring: this.options.dbcon }
     );
 
     this.fs.copyTpl(
