@@ -40,7 +40,8 @@ module.exports = class extends Generator {
 
     this.fs.copyTpl(
       this.templatePath('_routes.js'),
-      this.destinationPath('routes.js')
+      this.destinationPath('routes.js'),
+      { modulename: this.options.appname }
     );
 
     this.fs.copyTpl(
