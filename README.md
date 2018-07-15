@@ -17,10 +17,46 @@ npm install -g yo
 npm install -g generator-popeye
 ```
 
-Then generate your new project:
+Then generate your new project by providing a name:
 
 ```bash
-yo popeye
+yo popeye coolestapp
+```
+You will be asked to provide a mongodb connection URL along the way.
+
+Generate your modules whenever you need:
+
+```bash
+yo popeye:module coolest
+```
+
+## Folder structure
+
+Based on above command serquece, popeye will generate the following folder structure for your next exciting project.
+
+```
+|-- coolestapp/
+|---- app/
+|------ modules/
+|-------- root-module/
+|---------- root-controller.js
+|---------- root-model.js
+|---------- root-service.js
+|-------- coolest-module/
+|---------- coolest-controller.js
+|---------- coolest-model.js
+|---------- coolest-service.js
+|---- node_modules/
+|---- index.js
+|---- package.json
+|---- routes.js
+```
+Node that currently you have to manually edit the route.js file to include newly added modules. You just have to define the REST endpoint to your new module with the corresponding controller file. For example,
+
+```
+var coolestController = require('./app/modules/coolest-module/coolest-controller');
+
+router.use('/coolest', coolestController);
 ```
 
 ## Getting To Know Yeoman
