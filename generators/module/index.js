@@ -34,7 +34,8 @@ module.exports = class extends Generator {
         );
         
         console.log('require("'+ this.destinationPath('routes.js') +'")');
-        syntaxParser.getRoutesSyntaxTreeByPath('require("'+ this.destinationPath('routes.js') +'")');
+        //syntaxParser.getRoutesSyntaxTreeByPath('require("'+ this.destinationPath('routes.js') +'")');
+        syntaxParser.getRoutesSyntaxTreeByPath(this.destinationPath('routes.js'));
 
     }
 }
