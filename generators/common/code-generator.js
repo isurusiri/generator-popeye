@@ -58,7 +58,8 @@ var codeGen = {
 };
 
 var codeGenerator = {
-
+    importStatement: codeGen.generateImport,
+    newRouteStatement: codeGen.generateAddRoute
 };
 
 module.exports = codeGenerator;

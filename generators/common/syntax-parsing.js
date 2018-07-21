@@ -8,6 +8,11 @@ var syntaxParser = {
         console.log('start of syntax');
         console.log(JSON.stringify(routesSyntax));
         console.log('end of syntax');
+        return routesSyntax;
+    },
+
+    writeBackToFile: function(path, code) {
+        fs.writeFileSync(path, code);
     }
 }
 
