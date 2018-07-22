@@ -1,5 +1,5 @@
 var Generator = require('yeoman-generator');
-var syntaxParser = require('../common/syntax-parsing');//name of this file should changed
+var syntaxParser = require('../common/syntax-parser');//name of this file should changed
 var codeGenerator = require('../common/code-generator');
 var escodegen = require('escodegen');
 
