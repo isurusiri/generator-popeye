@@ -1,7 +1,9 @@
 var Generator = require('yeoman-generator');
+var escodegen = require('escodegen');
+var beautify = require('gulp-beautify');
+
 var syntaxParser = require('../common/syntax-parser');//name of this file should changed
 var codeGenerator = require('../common/code-generator');
-var escodegen = require('escodegen');
 
 module.exports = class extends Generator {
 
@@ -35,8 +37,6 @@ module.exports = class extends Generator {
             { name: this.options.modulename }
         );
         
-        console.log('require("'+ this.destinationPath('routes.js') +'")');
-        //syntaxParser.getRoutesSyntaxTreeByPath('require("'+ this.destinationPath('routes.js') +'")');
         var syntaxTree = syntaxParser.getRoutesSyntaxTreeByPath(this.destinationPath('routes.js'));
 
         // need to refactor and have a factory like thing for below
@@ -48,6 +48,8 @@ module.exports = class extends Generator {
 
         var destCode = escodegen.generate(syntaxTree);
         syntaxParser.writeBackToFile(this.destinationPath('routes.js'), destCode);
+
+        this.registerTransformStream(beautify({indent_size: 2 }));
 
     }
 }

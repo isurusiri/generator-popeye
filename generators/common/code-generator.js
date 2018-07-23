@@ -48,8 +48,12 @@ var codeGen = {
                 arguments: [
                     {
                         type: "Literal",
-                                value: module,
-                                raw: "'/" + module + "'"
+                        value: "/" + module,
+                        raw: "/" + module
+                    },
+                    {
+                        type: "Identifier",
+                        name: module + "Controller"
                     }
                 ]
             }
