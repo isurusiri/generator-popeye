@@ -1,69 +1,77 @@
-var codeGen = {
-    generateImport: function(module) {
-        return {
-            type: "VariableDeclaration",
-            declarations: [
-                {
-                    type: "VariableDeclarator",
-                    id: {
-                        type: "Identifier",
-                        name: module + "Controller"
-                    },
-                    init: {
-                        type: "CallExpression",
-                        callee: {
-                            type: "Identifier",
-                            name: "require"
-                        },
-                        arguments: [
-                            {
-                                type: "Literal",
-                                value: "./app/modules/" + module + "/" + module + "-controller",
-                                raw: "'./app/modules/" + module + "/" + module + "-controller'"
-                            }
-                        ]
-                    }
-                }
-            ],
-            kind: "var"
-        }
-    },
-    generateAddRoute: function(module) {
-        return {
-            type: "ExpressionStatement",
-            expression: {
-                type: "CallExpression",
-                callee: {
-                    type: "MemberExpression",
-                    computed: false,
-                    object: {
-                        type: "Identifier",
-                        name: "router"
-                    },
-                    property: {
-                        type: "Identifier",
-                        name: "use"
-                    }
+function requireStatement(module) {
+    this.type = "VariableDeclaration";
+    this.declarations = [
+        {
+            type: "VariableDeclarator",
+            id: {
+                    type: "Identifier",
+                    name: module + "Controller"
                 },
-                arguments: [
-                    {
-                        type: "Literal",
-                        value: "/" + module,
-                        raw: "/" + module
-                    },
-                    {
+            init: {
+                    type: "CallExpression",
+                    callee: {
                         type: "Identifier",
-                        name: module + "Controller"
-                    }
-                ]
-            }
+                        name: "require"
+                    },
+                    arguments: [
+                        {
+                            type: "Literal",
+                            value: "./app/modules/" + module + "/" + module + "-controller",
+                            raw: "'./app/modules/" + module + "/" + module + "-controller'"
+                        }
+                    ]
+                }
         }
+    ];
+    this.kind = "var";
+}
+
+function addRouteStatement(module) {
+    this.type = "ExpressionStatement";
+    this.expression = {
+        type: "CallExpression",
+        callee: {
+            type: "MemberExpression",
+            computed: false,
+            object: {
+                type: "Identifier",
+                name: "router"
+            },
+            property: {
+                type: "Identifier",
+                name: "use"
+            }
+        },
+        arguments: [
+            {
+                type: "Literal",
+                value: "/" + module,
+                raw: "/" + module
+            },
+            {
+                type: "Identifier",
+                name: module + "Controller"
+            }
+        ]
+    };
+}
+
+function CodeGenerator() {}
+
+// default is import statement
+CodeGenerator.prototype.statementClass = requireStatement;
+
+CodeGenerator.prototype.newStatement = function(options) {
+    switch(options.syntaxType) {
+        case "REQUIRE":
+            this.statementClass = requireStatement;
+            break;
+        case "NEW_ROUTE":
+            this.statementClass = addRouteStatement;
+            break;
     }
-};
 
-var codeGenerator = {
-    importStatement: codeGen.generateImport,
-    newRouteStatement: codeGen.generateAddRoute
-};
+    return new this.statementClass(options.module);
+}
 
-module.exports = codeGenerator;
+module.exports = CodeGenerator;
