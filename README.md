@@ -51,7 +51,7 @@ Based on above command serquece, popeye will generate the following folder struc
 |---- package.json
 |---- routes.js
 ```
-Note that currently you have to manually edit the route.js file to include newly added modules. You just have to define the REST endpoint to your new module with the corresponding controller file. For example,
+Note that Popeye will edit the route.js file to include newly added modules like below,
 
 ```
 var coolestController = require('./app/modules/coolest-module/coolest-controller');
