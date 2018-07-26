@@ -4,7 +4,7 @@
   <img src="https://github.com/isurusiri/generator-popeye/blob/master/popeye.png">
 </p>
 
-[![NPM version][npm-image]][https://www.npmjs.com/package/generator-popeye] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+[![NPM version][npm-image]](https://www.npmjs.com/package/generator-popeye) [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
 
 > A yeoman generator for express.js
 
