@@ -1,7 +1,7 @@
 {
   "name": "generator-popeye",
   "version": "0.0.0",
-  "description": "A yeoman generator for express.js",
+  "description": "A yeoman generator for express.js, Popeye helps you to scaffold new express.js based REST APIs.",
   "homepage": "https://github.com/isurusiri/generator-popeye",
   "author": {
     "name": "isurusiri",
@@ -15,7 +15,7 @@
   ],
   "main": "generators/index.js",
   "keywords": [
-    "",
+    "express.js",
     "yeoman-generator"
   ],
   "devDependencies": {
