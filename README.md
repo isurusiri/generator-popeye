@@ -59,6 +59,10 @@ var coolestController = require('./app/modules/coolest-module/coolest-controller
 router.use('/coolest', coolestController);
 ```
 
+##### To Do,
+ * adding express.js middleware 
+ * unit tests
+
 ## Getting To Know Yeoman
 
  * Yeoman has a heart of gold.
