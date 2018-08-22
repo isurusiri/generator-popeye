@@ -62,6 +62,11 @@ module.exports = class extends Generator {
       { name: "root" }
     );
 
+    this.fs.copyTpl(
+      this.templatePath('test/_index.js'),
+      this.destinationPath('test/index-test.js'),
+    );
+
   }
 
   install() {
