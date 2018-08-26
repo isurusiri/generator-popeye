@@ -39,5 +39,10 @@ module.exports = class extends Generator {
 
         this.registerTransformStream(beautify({indent_size: 2 }));
 
+        this.fs.copyTpl(
+            this.templatePath('test/template-test.js'),
+            this.destinationPath(`test/${this.options.modulename}-test.js`),
+        );
+
     }
 }
